@@ -177,16 +177,16 @@ window.onload = (e) => {
      const headerMarkup = `
        ${ alldays.map(day => `
           
-              <div class="day-info day-info-${day.createdOrder}" style="display: none;">${day.formatOne}</div>
+              <div class="day-info" id="day-info-${day.createdOrder}" style="display: none;">${day.formatOne}</div>
           
           `).join('') }
 
      `; 
      function toggle(obj) {
-       var item = document.getElementByClassName(obj);
+       var item = document.getElementById(obj);
        if(item.style.display == 'block') { item.style.display = 'none'; }
        else { item.style.display = 'block'; }
-}
+    }
       document.getElementById("svg-wrapper").innerHTML = markup2;
       document.getElementById("info-box").innerHTML = headerMarkup;
       //document.getElementById("container").innerHTML = markup2;
