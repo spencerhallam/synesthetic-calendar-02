@@ -69,6 +69,7 @@ h1{
 }
 .today:hover{
   fill: yellow !important;
+  
 }
 .weekday-sun{
   filter: saturate(100%);

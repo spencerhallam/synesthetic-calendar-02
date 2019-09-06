@@ -123,7 +123,8 @@ function createYearObjectArray(){
     let radius = 1200;
     let width = (radius * 2) + 50;
     let height = (radius * 2) + 50;
-    let angle = ((i / (366/2)) * Math.PI); // Calculate the angle at which the element will be placed.
+    let anglechange = 10.471975511965978;
+    let angle = ((i / (366/2)) * Math.PI) + anglechange; // Calculate the angle at which the element will be placed.
                                               // For a semicircle, we would use (i / numNodes) * Math.PI.
     let xspot = (radius * Math.cos(angle)) + (width/2); // Calculate the x position of the element.
     console.log('Math.cos(angle)', Math.cos(angle));
@@ -168,8 +169,7 @@ window.onload = (e) => {
       `;
     const markup2 = `
           ${ alldays.map(day => `
-          
-              <circle class="month-${day.month} ${day.code}" cx="${day.xcoord}" cy="${day.ycoord}" r="10" fill="#aeaeae" />
+              <circle class="month-${day.month} ${day.code} ${day.createdOrder}" fill-opacity="${((366-day.createdOrder)*0.02173224043)}" cx="${day.xcoord}" cy="${day.ycoord}" r="10" />
               <text class="text-${day.code} "x="${day.xcoord}" y="${day.ycoord}" text-anchor="middle" font-size="10px" font-family="Arial" dy=".3em">${day.daydate}</text>
               Sorry, your browser does not support inline SVG.
           
