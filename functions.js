@@ -177,7 +177,7 @@ window.onload = (e) => {
      const headerMarkup = `
        ${ alldays.map(day => `
           
-              <div class="day-info day-info-${day.createdOrder}" style="style="visibility: hidden;"">${day.formatOne}</div>
+              <div class="day-info day-info-${day.createdOrder}" style="visibility: hidden;">${day.formatOne}</div>
           
           `).join('') }
 
