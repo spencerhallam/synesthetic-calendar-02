@@ -82,6 +82,12 @@ const monthNumToName = (month) => {
   }
 }
 
+const toggle = (obj) => {
+        var item = document.getElementById(obj);
+        if(item.style.display == 'block') { item.style.display = 'none'; }
+        else { item.style.display = 'block'; }
+      }
+
 
 function createYearObjectArray(){
 
@@ -160,12 +166,6 @@ console.log(yearObjectArray);
 window.onload = (e) => {
 
     function renderyear(alldays){
-      
-      function toggle(obj) {
-        var item = document.getElementById(obj);
-        if(item.style.display == 'block') { item.style.display = 'none'; }
-        else { item.style.display = 'block'; }
-      }
       
     const markup = `
           ${ alldays.map(day => `
