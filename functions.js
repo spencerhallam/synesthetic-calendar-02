@@ -184,8 +184,8 @@ window.onload = (e) => {
      `; 
      function toggle(obj) {
        var item = document.getElementByClassName(obj);
-       if(item.style.display == 'block') { item.style.visibility = 'none'; }
-       else { item.style.visibility = 'block'; }
+       if(item.style.display == 'block') { item.style.display = 'none'; }
+       else { item.style.display = 'block'; }
 }
       document.getElementById("svg-wrapper").innerHTML = markup2;
       document.getElementById("info-box").innerHTML = headerMarkup;
