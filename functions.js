@@ -184,7 +184,7 @@ window.onload = (e) => {
      const headerMarkup = `
        ${ alldays.map(day => `
           
-              <div class="day-info" id="day-info-${day.createdOrder}" style="display: none;">${day.formatOne}</div>
+              <div class="day-info" id="day-info-${day.createdOrder}" style="display: none;">${day.formatOne + " | " + day.milliseconds + " | " + day.createdOrder + " | " + day.daydate + " | " + day.month + " | " + day.weekday + " | " + day.dayName + " | " + day.monthName + " | " + day.xcoord + " | " + day.ycoord + " | " + day.code }</div>
           
           `).join('') }
 
