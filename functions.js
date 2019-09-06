@@ -169,7 +169,7 @@ window.onload = (e) => {
       `;
     const markup2 = `
           ${ alldays.map(day => `
-              <circle class="month-${day.month} ${day.code} ${day.createdOrder}" onmouseover="toggle('day-info-${day.createdOrder}');" onmouseout="toggle('day-info-${day.createdOrder}'); fill-opacity="${((366-day.createdOrder)*0.02173224043)}" cx="${day.xcoord}" cy="${day.ycoord}" r="10" />
+              <circle class="month-${day.month} ${day.code} ${day.createdOrder}" onmouseover="toggle('day-info-${day.createdOrder}');" onmouseout="toggle('day-info-${day.createdOrder}');" fill-opacity="${((366-day.createdOrder)*0.02173224043)}" cx="${day.xcoord}" cy="${day.ycoord}" r="10" />
               <text class="text-${day.code} "x="${day.xcoord}" y="${day.ycoord}" text-anchor="middle" font-size="10px" font-family="Arial" dy=".3em">${day.daydate}</text>    
           `).join('') }
       `;
