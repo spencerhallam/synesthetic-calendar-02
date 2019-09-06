@@ -1,4 +1,4 @@
-
+// http://bl.ocks.org/bycoffe/3404776
 const nowz = new Date();
 
 const myday = nowz.getDate();
@@ -85,7 +85,7 @@ const monthNumToName = (month) => {
 
 function createYearObjectArray(){
 
-  function SynMonth (date, milliseconds, formatOne, createdOrder, daydate, month, weekday) {
+  function SynMonth (date, milliseconds, formatOne, createdOrder, daydate, month, weekday, xcoord, ycoord, code) {
     this.date = date;
     this.milliseconds = milliseconds;
     this.formatOne = formatOne;
@@ -95,6 +95,9 @@ function createYearObjectArray(){
     this.weekday = weekday;
     this.dayName = convertToDayOfTheWeek(weekday);
     this.monthName = monthNumToName(month);
+    this.xcoord = xcoord;
+    this.ycoord = ycoord;
+    this.code = code;
   }
 
   const dataArray = []
@@ -106,14 +109,27 @@ function createYearObjectArray(){
   let nextyearmilli = nystandard.getTime();
   let daymils = 86400000;
 
-  for(let i = 0; i < 370; i++){
+  for(let i = 0; i < 366; i++){
     let disday = start + (daymils*i);
     let standard = new Date(disday);
     let daydatei = standard.getDate();
+    console.log('daydatei', daydatei);
     let slashFormat = (standard.getMonth() + 1) + "/" + (standard.getDate()) + "/" +  (standard.getFullYear());
+    console.log('slashFormat', slashFormat);
+    let currDayFormat = (formatnow.getMonth() + 1) + "/" + (formatnow.getDate()) + "/" +  (formatnow.getFullYear());
+    let isToday = slashFormat === currDayFormat ? "today" : "otherday";
     let monthId = standard.getMonth() + 1;
     let dayId = standard.getDay();//day of the week
-    const dayNode = new SynMonth(standard, disday, slashFormat, i, daydatei, monthId, dayId);
+    let radius = 1200;
+    let width = (radius * 2) + 50;
+    let height = (radius * 2) + 50;
+    let angle = ((i / (366/2)) * Math.PI); // Calculate the angle at which the element will be placed.
+                                              // For a semicircle, we would use (i / numNodes) * Math.PI.
+    let xspot = (radius * Math.cos(angle)) + (width/2); // Calculate the x position of the element.
+    console.log('Math.cos(angle)', Math.cos(angle));
+    console.log("angle", angle);
+    let yspot = (radius * Math.sin(angle)) + (width/2); // Calculate the y position of the element.
+    const dayNode = new SynMonth(standard, disday, slashFormat, i, daydatei, monthId, dayId, xspot, yspot, isToday);
     if(disday < nextyearmilli){
       dataArray.push(dayNode);
     }
@@ -135,8 +151,8 @@ function formatYear(arrayx){
 
 const yearArray = createYearArray(); //stores array of milliseconds for each day
 const yearObjectArray = createYearObjectArray()
+console.log("xy?", yearObjectArray);
 const formattedYear = formatYear(yearArray); //stores array of formatted dates
-
 console.log(yearObjectArray);
 
 // rendered html
@@ -150,8 +166,34 @@ window.onload = (e) => {
             <div class="day-date">${day.daydate}</div>
           </div>`).join('') }
       `;
-      document.getElementById("container").innerHTML = markup;
+    const markup2 = `
+          ${ alldays.map(day => `
+          
+              <circle class="month-${day.month} ${day.code}" cx="${day.xcoord}" cy="${day.ycoord}" r="10" fill="#aeaeae" />
+              <text class="text-${day.code} "x="${day.xcoord}" y="${day.ycoord}" text-anchor="middle" font-size="10px" font-family="Arial" dy=".3em">${day.daydate}</text>
+              Sorry, your browser does not support inline SVG.
+          
+          `).join('') }
+      `;
+
+     const headerMarkup = `
+       ${ alldays.map(day => `
+          
+              <div class="day-info" style="display:none;">${day.formatOne}</div>
+          
+          `).join('') }
+
+     `; 
+      document.getElementById("svg-wrapper").innerHTML = markup2;
+      document.getElementById("info-box").innerHTML = headerMarkup;
+      //document.getElementById("container").innerHTML = markup2;
+
+
     }
+    
+    
+    
+
     function renderInfo(){}//this should render day object info in header
     renderyear(yearObjectArray);
   }
