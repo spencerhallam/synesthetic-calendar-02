@@ -169,21 +169,24 @@ window.onload = (e) => {
       `;
     const markup2 = `
           ${ alldays.map(day => `
-              <circle class="month-${day.month} ${day.code} ${day.createdOrder}" fill-opacity="${((366-day.createdOrder)*0.02173224043)}" cx="${day.xcoord}" cy="${day.ycoord}" r="10" />
-              <text class="text-${day.code} "x="${day.xcoord}" y="${day.ycoord}" text-anchor="middle" font-size="10px" font-family="Arial" dy=".3em">${day.daydate}</text>
-              Sorry, your browser does not support inline SVG.
-          
+              <circle class="month-${day.month} ${day.code} ${day.createdOrder}" onmouseover="toggle('day-info-${day.createdOrder}');" onmouseout="toggle('day-info-${day.createdOrder}'); fill-opacity="${((366-day.createdOrder)*0.02173224043)}" cx="${day.xcoord}" cy="${day.ycoord}" r="10" />
+              <text class="text-${day.code} "x="${day.xcoord}" y="${day.ycoord}" text-anchor="middle" font-size="10px" font-family="Arial" dy=".3em">${day.daydate}</text>    
           `).join('') }
       `;
 
      const headerMarkup = `
        ${ alldays.map(day => `
           
-              <div class="day-info" style="display:none;">${day.formatOne}</div>
+              <div class="day-info day-info-${day.createdOrder}" style="style="visibility: hidden;"">${day.formatOne}</div>
           
           `).join('') }
 
      `; 
+     function toggle(obj) {
+       var item = document.getElementByClassName(obj);
+       if(item.style.visibility == 'visible') { item.style.visibility = 'hidden'; }
+       else { item.style.visibility = 'visible'; }
+}
       document.getElementById("svg-wrapper").innerHTML = markup2;
       document.getElementById("info-box").innerHTML = headerMarkup;
       //document.getElementById("container").innerHTML = markup2;
