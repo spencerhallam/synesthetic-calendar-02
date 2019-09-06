@@ -160,6 +160,13 @@ console.log(yearObjectArray);
 window.onload = (e) => {
 
     function renderyear(alldays){
+      
+      function toggle(obj) {
+        var item = document.getElementById(obj);
+        if(item.style.display == 'block') { item.style.display = 'none'; }
+        else { item.style.display = 'block'; }
+      }
+      
     const markup = `
           ${ alldays.map(day => `
           <div class="daynode month-${day.month} weekday-${day.dayName}">
@@ -182,11 +189,7 @@ window.onload = (e) => {
           `).join('') }
 
      `; 
-     function toggle(obj) {
-       var item = document.getElementById(obj);
-       if(item.style.display == 'block') { item.style.display = 'none'; }
-       else { item.style.display = 'block'; }
-    }
+     
       document.getElementById("svg-wrapper").innerHTML = markup2;
       document.getElementById("info-box").innerHTML = headerMarkup;
       //document.getElementById("container").innerHTML = markup2;
