@@ -177,15 +177,15 @@ window.onload = (e) => {
      const headerMarkup = `
        ${ alldays.map(day => `
           
-              <div class="day-info day-info-${day.createdOrder}" style="visibility: hidden;">${day.formatOne}</div>
+              <div class="day-info day-info-${day.createdOrder}" style="display: none;">${day.formatOne}</div>
           
           `).join('') }
 
      `; 
      function toggle(obj) {
        var item = document.getElementByClassName(obj);
-       if(item.style.visibility == 'visible') { item.style.visibility = 'hidden'; }
-       else { item.style.visibility = 'visible'; }
+       if(item.style.display == 'block') { item.style.visibility = 'none'; }
+       else { item.style.visibility = 'block'; }
 }
       document.getElementById("svg-wrapper").innerHTML = markup2;
       document.getElementById("info-box").innerHTML = headerMarkup;
