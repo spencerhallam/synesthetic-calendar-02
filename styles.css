@@ -2,6 +2,13 @@ body{
   margin: 0px;
   font-family: sans-serif;
   background-color: black;
+  font-size: 12px;
+  color: lightgray;
+}
+
+body p{
+  margin: 0px;
+  padding: 5px 0px;
 }
 
 #header{
@@ -10,15 +17,30 @@ body{
   background-color: hsl(0, 0%, 20%);
   padding: 20px;
 }
-
+#flex-header{
+  display: flex;
+}
 h1{
-  margin: 10px 0px;
+  display: inline-block;
+  font-size: 1.1rem;
+  margin: 0px 0px;
   font-family: sans-serif;
   color: lightgray;
 }
-
+#day-info-0 .date-heading{
+  font-size: 1.5rem;
+}
+#info-box{
+  display: inline-block;
+  min-height: 30px;
+}
 .day-info{
   color: lightgray;
+  margin-bottom: 10px
+}
+.date-heading{
+  font-size: 1.2rem;
+  font-weight: 100;
 }
 #container{
   padding-top: 200px;
@@ -26,7 +48,9 @@ h1{
   flex-wrap: wrap;
   display: flex;
 }
-
+#svg-wrapper circle, #svg-wrapper text{
+  cursor: pointer
+}
 .daynode{
   display: flex;
   flex-direction: column;
@@ -43,10 +67,9 @@ h1{
   color: white;
 }
 
-.daynode:hover{
-  -moz-box-shadow:    inset 0 0 0 2px lightgray;
-  -webkit-box-shadow: inset 0 0 0 2px lightgray;
-  box-shadow:         inset 0 0 0 2px lightgray;
+#day-node:hover{
+  stroke-width: 1;
+  stroke: white; 
 }
 .daynode div.day-name{
   display: none;
@@ -71,28 +94,22 @@ h1{
   fill: yellow !important;
   
 }
-.weekday-sun{
-  filter: saturate(100%);
+.weekday-Sunday{
+  font-weight: bold;
 }
-.weekday-mon{
-  filter: saturate(60%);
-}
-.weekday-tue{
-  filter: saturate(60%);
-}
-.weekday-wed{
-  filter: saturate(50%);
-}
-.weekday-thu{
-  filter: saturate(60%);
-}
-.weekday-fri{
-  filter: saturate(60%);
-}
-.weekday-sat{
-  filter: saturate(100%);
-}
+.weekday-Monday{}
 
+.weekday-Tueday{}
+
+.weekday-Wednesday{}
+
+.weekday-Thursday{}
+
+.weekday-Friday{}
+
+.weekday-Saturday{
+  font-weight: bold;
+}
 
 .month-1{
   background-color:hsl(230, 100%, 70%);
@@ -141,4 +158,40 @@ h1{
 .month-12{
   background-color:hsl(200, 100%, 60%);
   fill:hsl(200, 100%, 60%);
+}
+.monthfont-1{
+  color:hsl(230, 100%, 70%);
+}
+.monthfont-2{
+  color:hsl(200, 100%, 50%);
+}
+.monthfont-3{
+  color:hsl(150, 100%, 30%);
+}
+.monthfont-4{
+  color:hsl(80, 100%, 40%);
+}
+.monthfont-5{
+  color:hsl(90, 100%, 25%);
+}
+.monthfont-6{
+  color:hsl(45, 100%, 50%);
+}
+.monthfont-7{
+  color:hsl(30, 100%, 50%);
+}
+.monthfont-8{
+  color:hsl(0, 100%, 50%);
+}
+.monthfont-9{
+  color:hsl(20, 100%, 60%);
+}
+.monthfont-10{
+  color:hsl(30, 100%, 35%);
+}
+.monthfont-11{
+  color:hsl(240, 100%, 60%);
+}
+.monthfont-12{
+  color:hsl(200, 100%, 60%);
 }
